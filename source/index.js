@@ -15,7 +15,15 @@ fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => console.log('Your IP:', data.ip));
 
+// Using ipapi.co
+fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => console.log('Your IP:', data.ip));
 
+// Using ip.jsontest.com
+fetch('http://ip.jsontest.com/')
+    .then(response => response.json())
+    .then(data => console.log('Your IP:', data.ip));
 
 
 const app = express();
