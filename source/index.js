@@ -27,10 +27,7 @@ if (require.main === module) {
         console.log("Server started");
         try {
             await mongoose.connect(process.env.MONGODB_URI, {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                ssl: true,
-                retryWrites: true
+                ssl: true
             });
             console.log("Database connected");
         } catch (error) {
