@@ -1,4 +1,4 @@
-const { Post, Comment } = require("../models/post")
+const { Post, Comment } = require("../models/postModel")
 
 async function createComment(comment, postId) {
     const post = await Post.findById(postId)
