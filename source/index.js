@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 const accountRouter = require("../routes/accountRoute");
 const coffeeRoutes = require("../routes/coffeeRoutes");
@@ -24,10 +25,17 @@ app.use("/user", userRoute);
 if (require.main === module) {
     app.listen(3000, async () => {
         console.log("Server started");
-        await mongoose.connect(
-            "mongodb+srv://jackvassallo01:Xd39FxnSMQETljKV@cluster0.h2v5a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-        );
-        console.log("Database connected");
+        try {
+            await mongoose.connect(process.env.MONGODB_URI, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                ssl: true,
+                retryWrites: true
+            });
+            console.log("Database connected");
+        } catch (error) {
+            console.error("Database connection error:", error);
+        }
     });
 }
 
